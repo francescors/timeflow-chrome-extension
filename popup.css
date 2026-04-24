@@ -1,0 +1,348 @@
+:root {
+  --bg: #0d0d0f;
+  --surface: #17171a;
+  --surface2: #1e1e22;
+  --border: #2a2a30;
+  --text: #f0f0f5;
+  --text-muted: #6b6b7a;
+  --accent: #7c6dfa;
+  --accent-glow: rgba(124, 109, 250, 0.15);
+  --green: #4ade80;
+  --yellow: #fbbf24;
+  --red: #f87171;
+  --blue: #60a5fa;
+  --pink: #f472b6;
+  --orange: #fb923c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 320px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  min-height: 400px;
+}
+
+.container {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Header ─────────────────────────────────────── */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 16px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 8px var(--accent); }
+  50% { opacity: 0.6; box-shadow: 0 0 3px var(--accent); }
+}
+
+.logo-text {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: -0.3px;
+  color: var(--text);
+}
+
+.header-actions {
+  display: flex;
+  gap: 4px;
+  background: var(--surface);
+  border-radius: 8px;
+  padding: 3px;
+  border: 1px solid var(--border);
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  letter-spacing: 0.3px;
+}
+
+.tab-btn:hover {
+  color: var(--text);
+}
+
+.tab-btn.active {
+  background: var(--surface2);
+  color: var(--text);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+/* ─── Total Card ─────────────────────────────────── */
+.total-card {
+  padding: 20px 16px 16px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(135deg, var(--surface) 0%, var(--bg) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.total-card::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  right: -20px;
+  width: 100px;
+  height: 100px;
+  background: var(--accent-glow);
+  border-radius: 50%;
+  filter: blur(30px);
+  pointer-events: none;
+}
+
+.total-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.total-time {
+  font-family: 'Space Mono', monospace;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+  letter-spacing: -1px;
+  margin-bottom: 6px;
+}
+
+.total-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* ─── Sites List ─────────────────────────────────── */
+.sites-list {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 220px;
+  padding: 8px 0;
+}
+
+.sites-list::-webkit-scrollbar {
+  width: 3px;
+}
+.sites-list::-webkit-scrollbar-track { background: transparent; }
+.sites-list::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 30px 20px;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.site-row {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  gap: 10px;
+  transition: background 0.1s ease;
+  cursor: default;
+  animation: fadeIn 0.2s ease both;
+}
+
+.site-row:hover {
+  background: var(--surface);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.site-favicon {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  background: var(--surface2);
+}
+
+.site-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.site-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 3px;
+}
+
+.site-bar-wrap {
+  height: 3px;
+  background: var(--surface2);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.site-bar {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.site-time {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  text-align: right;
+  min-width: 52px;
+}
+
+.site-rank {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-weight: 600;
+  width: 14px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* ─── Footer ─────────────────────────────────────── */
+footer {
+  padding: 10px 16px 14px;
+  border-top: 1px solid var(--border);
+}
+
+.reset-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  padding: 6px 12px;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  width: 100%;
+  justify-content: center;
+  letter-spacing: 0.2px;
+}
+
+.reset-btn:hover {
+  background: #2a0f0f;
+  border-color: var(--red);
+  color: var(--red);
+}
+
+/* ─── Confirm modal ──────────────────────────────── */
+.confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: fadeIn 0.15s ease;
+}
+
+.confirm-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  width: 220px;
+  text-align: center;
+}
+
+.confirm-box p {
+  font-size: 13px;
+  color: var(--text);
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.confirm-box small {
+  font-size: 11px;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 16px;
+}
+
+.confirm-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.confirm-actions button {
+  flex: 1;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  transition: opacity 0.1s;
+}
+
+.confirm-actions button:hover { opacity: 0.8; }
+
+.btn-cancel {
+  background: var(--surface2);
+  color: var(--text);
+  border: 1px solid var(--border) !important;
+}
+
+.btn-confirm {
+  background: var(--red);
+  color: white;
+}

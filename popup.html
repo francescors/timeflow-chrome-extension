@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>TimeFlow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="logo">
+        <span class="logo-dot"></span>
+        <span class="logo-text">TimeFlow</span>
+      </div>
+      <div class="header-actions">
+        <button id="btn-today" class="tab-btn active" data-period="today">Today</button>
+        <button id="btn-week" class="tab-btn" data-period="week">Week</button>
+      </div>
+    </header>
+
+    <!-- Total -->
+    <div class="total-card">
+      <div class="total-label">Total tracked</div>
+      <div class="total-time" id="total-time">0h 00m</div>
+      <div class="total-sub" id="total-sub">Loading...</div>
+    </div>
+
+    <!-- Liste des sites -->
+    <div class="sites-list" id="sites-list">
+      <div class="empty-state">No data yet.<br/>Start browsing!</div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <button id="btn-reset" class="reset-btn">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+          <path d="M3 3v5h5"/>
+        </svg>
+        Reset data
+      </button>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
